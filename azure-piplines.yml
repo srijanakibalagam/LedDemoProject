@@ -1,0 +1,29 @@
+# Conan build pipeline
+name: demo-led-status-indication build pipeline
+pool:
+  name: AZP-006_Raspberrypi_tool
+
+steps:
+- script: |
+    pwd
+    conan config install conanconfig
+    conan remote list
+    conan user
+#    conan create . swf/latest --build=swf-raspi-tutorial -pr=swf_ubuntu16_x64_gcc5 -o swf-raspi-tutorial-lib:shared=False
+#    conan create . swf/latest --build=swf-raspi-tutorial -pr=swf_linux_to_arm_raspi
+  displayName: 'Building via Conan'
+
+- script: |
+    cd $(Build.ArtifactStagingDirectory)
+    pwd
+#    conan install swf-raspi-tutorial/1.0.0@swf/latest -pr=swf_ubuntu16_x64_gcc5 -o swf-raspi-tutorial-lib:shared=False -g virtualrunenv
+#    conan install swf-raspi-tutorial/1.0.0@swf/latest -pr=swf_linux_to_arm_raspi -g virtualrunenv
+#    source activate_run.sh
+#    ./bin/swf-raspi-tutorial.Linux.x86_64
+#    ./bin/swf-raspi-tutorial.Linux.x86_64 --version
+
+#    chmod 777 run.sh
+#    cat run.sh
+#    ./run.sh
+#    ./run.sh --version
+  displayName: 'Testing executables'
