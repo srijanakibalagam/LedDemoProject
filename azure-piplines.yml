@@ -9,17 +9,19 @@ steps:
     conan config install conanconfig
     conan remote list
     conan user
-#    conan create . swf/latest --build=swf-raspi-tutorial -pr=swf_ubuntu16_x64_gcc5 -o swf-raspi-tutorial-lib:shared=False
+    conan create . swf/latest --build=demo-led-status-indication -pr=swf_ubuntu16_x64_gcc5
 #    conan create . swf/latest --build=swf-raspi-tutorial -pr=swf_linux_to_arm_raspi
   displayName: 'Building via Conan'
 
 - script: |
     cd $(Build.ArtifactStagingDirectory)
     pwd
-#    conan install swf-raspi-tutorial/1.0.0@swf/latest -pr=swf_ubuntu16_x64_gcc5 -o swf-raspi-tutorial-lib:shared=False -g virtualrunenv
+    conan install demo-led-status-indication/1.0.0@swf/latest -pr=swf_ubuntu16_x64_gcc5 -g virtualrunenv
+    source activate_run.sh
+    ./bin/demo-led-status-indication.Linux.x86_64
 #    conan install swf-raspi-tutorial/1.0.0@swf/latest -pr=swf_linux_to_arm_raspi -g virtualrunenv
 #    source activate_run.sh
-#    ./bin/swf-raspi-tutorial.Linux.x86_64
+#    ./bin/demo-led-status-indication.Linux.x86_64
 #    ./bin/swf-raspi-tutorial.Linux.x86_64 --version
 
 #    chmod 777 run.sh
