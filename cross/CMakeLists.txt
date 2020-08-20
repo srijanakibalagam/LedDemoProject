@@ -11,5 +11,5 @@ SET(CMAKE_FIND_ROOT_PATH /usr/arm-linux-gnueabihf)
 
 PROJECT(demo-led-status-indication)
 
-add_executable(demo-led-status-indication ../src/main.cc)
+add_executable(demo-led-status-indication-arm ../src/main.cc ../src/led.cc )
 

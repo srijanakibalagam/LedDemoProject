@@ -18,14 +18,34 @@
 #endif
 
 #include <iostream>
+#include <unistd.h>
 #include <string>
-#include <sstream>
+//#include <sstream>
 
+#include "led.h"
 
 int main(int argc, const char* argv[]) {
     // Standard string to output
+CLed ledRed;
+int i = 3;
 
     std::cout << "\tHello this is the demo led project!! " << std::endl;
+
+    ledRed.SetFileName( "/sys/devices/platform/leds/leds/ind:red/brightness" );
+
+    while( i > 0 )
+    {
+    	i--;
+    	std::cout << "\t\tActive!! " << std::endl;
+    	ledRed.Write( 255 );
+    	usleep(1000000);
+    	std::cout << "\t\tNOT Active!! " << std::endl;
+    	ledRed.Write( 0 );
+    	usleep(1000000);
+    }
+
+    //led.SetFileName( "" );
+
 
     return 0;
 }
