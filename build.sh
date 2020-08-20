@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Building project via Conan..."
-conan create . swf/latest -pr=swf_ubuntu18_x64_gcc7 --test-folder=None
+conan create . swf/latest -pr=swf_ubuntu18_x64_gcc7
 
 echo "'Installing' latest version via Conan..."
 cd build

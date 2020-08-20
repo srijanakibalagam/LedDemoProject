@@ -10,19 +10,9 @@
  * @copyright [2020] ZF Friedrichshafen AG
  */
 
-#ifndef SRC_LED_H_
-#define SRC_LED_H_
+#ifndef SRC_RUN_LED_H_
+#define SRC_RUN_LED_H_
 
-class CLed
-{
-	public:
-		CLed();
-		void SetFileName( std::string filename );
-		int  Write( unsigned int value );
+int run_led();
 
-
-	private:
-		std::string str_filename;
-};
-
-#endif /* SRC_LED_H_ */
+#endif /* SRC_RUN_LED_H_ */
