@@ -34,6 +34,10 @@
 #ifndef SRC_RUN_LED_H_
 #define SRC_RUN_LED_H_
 
+/**
+ * @brief run the led 3 times
+ * @return         error value
+ */
 int run_led();
 
 #endif /* SRC_RUN_LED_H_ */
