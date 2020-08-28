@@ -47,7 +47,6 @@
 CLed::CLed() {}
 
 /**
- * @description   set the path to the led
  * @parameter[in] value the value to be written
  */
 void CLed::SetFileName(std::string filename) { str_filename = filename; }
