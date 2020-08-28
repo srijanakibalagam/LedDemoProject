@@ -46,7 +46,12 @@ class CLed {
  * @param[in] value the value to be written
  */
   void SetFileName(std::string filename);  void SetFileName(std::string filename);
-  int Write(unsigned int value);
+  i/**
+ * @brief writing a value to the led
+ * @return 		error value
+ * @param[in] value the value to be written
+ */
+  int Write(unsigned int value);nt Write(unsigned int value);
 
  private:
   std::string str_filename;
