@@ -45,7 +45,7 @@ class CLed {
  * @brief   set the path to the led
  * @param[in] value the value to be written
  */
-  void SetFileName(std::string filename);  void SetFileName(std::string filename);
+  void SetFileName(std::string filename);
 /**
  * @brief writing a value to the led
  * @return 		error value
