@@ -51,7 +51,7 @@ class CLed {
  * @return 		error value
  * @param[in] value the value to be written
  */
-  int Write(unsigned int value);nt Write(unsigned int value);
+  int Write(unsigned int value);
 
  private:
   std::string str_filename;
