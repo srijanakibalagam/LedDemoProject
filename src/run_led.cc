@@ -36,11 +36,6 @@
 
 #include "led.h"  // NOLINT
 
-/**
- * @description    run the led 3 times
- * @return         error value
- * @parameter[in]  value the value to be written
- */
 int run_led() {
   CLed ledRed;
   int i = 3;
