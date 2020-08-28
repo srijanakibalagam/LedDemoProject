@@ -46,16 +46,9 @@
 
 CLed::CLed() {}
 
-/**
- * @parameter[in] value the value to be written
- */
+
 void CLed::SetFileName(std::string filename) { str_filename = filename; }
 
-/**
- * @description   writing a value to the led
- * @return 		error value
- * @parameter[in] value the value to be written
- */
 int CLed::Write(unsigned int value) {
   static const char values_str[] = "01";
   int fd;
