@@ -14,13 +14,26 @@ steps:
   displayName: 'Building via Conan'
 
 - script: |
-        cd test/build/CMakeFiles/gtestbin.dir
-        gcov main.gcno
-        lcov --capture --directory . --output-file LCOVOUTPUT.info
-        genhtml LCOVOUTPUT.info --output-directory CODE_COVERAGE
-  displayName: 'Running Lcov Gcov!'
+# create a build directory
+    mkdir build
+# compile the code to generate *.gcno files for QNX aarch64 platform
+    cmake -DCONAN_PROFILE=../build/profile/qnx-aarch64 -DCMAKE_TOOLCHAIN_FILE=../build/cmake/qnx-aarch64.cmake ../build
 
 - script: |
-        ls test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE
-  displayName: 'opening code coverage report'
+# Stripping elements from the path found in the object files, use 9999 for sure because we don't know exactly how depth the build directory
+    GCOV_PREFIX_STRIP=9999 ./greatestof3
+  displayName: 'Navigating to build directory'
+
+- script: |
+    pwd
+# Generate code coverage for main_test in generated files *.gcov
+    gcov test_runner
+  displayName: 'generating code coverage for test_runner in gcov'
+
+- script: |
+# Generate reports in html format
+    lcov --capture --directory . --output-file main_coverage.info
+    genhtml main_coverage.info --output-directory out
+  displayName: 'Running Lcov Gcov!'
+
 
