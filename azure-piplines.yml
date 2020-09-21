@@ -5,6 +5,8 @@ pool:
 
 steps:
 - script: |
+    sudo apt-get update -y
+    sudo apt-get install -y lcov
     pwd
     conan config install conanconfig
     conan remote list
@@ -12,4 +14,15 @@ steps:
     conan create . swf/latest --build=demo-led-status-indication -pr=swf_ubuntu16_x64_gcc5
 #    conan create . swf/latest --build=demo-led-status-indication -pr=swf_linux_to_arm_raspi
   displayName: 'Building via Conan'
+
+- script: |
+        cd test/build/CMakeFiles/gtestbin.dir
+        gcov main.gcno
+        lcov --capture --directory . --output-file LCOVOUTPUT.info
+        genhtml LCOVOUTPUT.info --output-directory CODE_COVERAGE
+  displayName: 'Running Lcov Gcov!'
+
+- script: |
+        ls test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE
+  displayName: 'opening code coverage report'
 
