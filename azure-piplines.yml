@@ -5,8 +5,6 @@ pool:
 
 steps:
 - script: |
-    sudo apt-get update -y
-    sudo apt-get install -y lcov
     pwd
     conan config install conanconfig
     conan remote list
