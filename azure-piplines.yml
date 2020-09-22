@@ -12,26 +12,3 @@ steps:
     conan create . swf/latest --build=demo-led-status-indication -pr=swf_ubuntu16_x64_gcc5
 #    conan create . swf/latest --build=demo-led-status-indication -pr=swf_linux_to_arm_raspi
   displayName: 'Building via Conan'
-
-# create a build directory
-# compile the code to generate *.gcno files for QNX aarch64 platform
-- script: |
-    mkdir build
-    cmake -DCONAN_PROFILE=../build/profile/qnx-aarch64 -DCMAKE_TOOLCHAIN_FILE=../build/cmake/qnx-aarch64.cmake ../build
-
-# Stripping elements from the path found in the object files, use 9999 for sure because we don't know exactly how depth the build directory
-- script: |
-    GCOV_PREFIX_STRIP=9999 ./greatestof3
-  displayName: 'Navigating to build directory'
-
-# Generate code coverage for main_test in generated files *.gcov
-- script: |
-    pwd
-    gcov test_runner
-  displayName: 'generating code coverage for test_runner in gcov'
-
-# Generate reports in html format
-- script: |
-    lcov --capture --directory . --output-file main_coverage.info
-    genhtml main_coverage.info --output-directory out
-  displayName: 'Running Lcov Gcov!'
