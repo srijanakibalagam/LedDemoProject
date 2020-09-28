@@ -14,7 +14,7 @@ steps:
   displayName: 'Building via Conan'
 
 - script: |
-    cmake -DCONAN_PROFILE=../build/profile/swf_ubuntu16_x64_gcc5 -DCMAKE_TOOLCHAIN_FILE=../build/cmake/swf_ubuntu16_x64_gcc5  .cmake ../cross-cov-gtest
+    cmake -DCONAN_PROFILE=../build/profile/swf_ubuntu16_x64_gcc5 -DCMAKE_TOOLCHAIN_FILE=../build/cmake/swf_ubuntu16_x64_gcc5  .cmake ../build
     ls ./build
   displayName: 'Uploading packages to artifactory'
 
