@@ -12,4 +12,7 @@ steps:
     conan create . swf/latest --build=demo-led-status-indication -pr=swf_ubuntu16_x64_gcc5
 #    conan create . swf/latest --build=demo-led-status-indication -pr=swf_linux_to_arm_raspi
   displayName: 'Building via Conan'
-  
+
+- script: |
+    conan upload demo-led-status-indication/1.0.0@swf/latest -r swfAzureMirror --all --force
+  displayName: 'Uploading packages to artifactory'
