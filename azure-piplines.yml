@@ -14,7 +14,8 @@ steps:
   displayName: 'Building via Conan'
 
 - script: |
-    ls src
+    cd build
+    ls
   displayName: 'Uploading packages to artifactory'
 
 - script: |
