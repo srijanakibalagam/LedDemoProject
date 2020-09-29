@@ -33,3 +33,4 @@ add_custom_target(scrub
 COMMAND rm -f ${OBJECT_DIR}/*.gcno
 COMMAND rm -f ${OBJECT_DIR}/*.gcda
 WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+)
