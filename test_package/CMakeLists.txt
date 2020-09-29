@@ -34,9 +34,3 @@ COMMAND ${CMAKE_MAKE_PROGRAM} clean
 COMMAND rm -f ${OBJECT_DIR}/*.gcno
 COMMAND rm -f ${OBJECT_DIR}/*.gcda
 WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-
-# Testing
-enable_testing()
-
-add_test(output_test ${CMAKE_BINARY_DIR}/main)
-set_tests_properties(output_test PROPERTIES PASS_REGULAR_EXPRESSION "0;5;10")
