@@ -15,12 +15,8 @@ steps:
 
 - script: |
     cd test_package/build
-    cmake -DCONAN_PROFILE=../profile/swf_ubuntu16_x64_gcc5 -DCMAKE_TOOLCHAIN_FILE=../cmake/**.cmake .
+    cmake -DCONAN_PROFILE=../profile/swf_ubuntu16_x64_gcc5 -DCMAKE_TOOLCHAIN_FILE=../**.cmake .
     lcov --capture --directory . --output-file main_coverage.info
     genhtml main_coverage.info --output-directory out
     ls
-  displayName: 'Uploading packages to artifactory'
-
-- script: |
-    conan upload demo-led-status-indication/1.0.0@swf/latest -r swfAzureMirror --all --force
   displayName: 'Uploading packages to artifactory'
