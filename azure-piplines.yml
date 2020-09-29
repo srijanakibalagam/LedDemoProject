@@ -15,7 +15,6 @@ steps:
 
 - script: |
     cd test_package/build
-    ls test_package/build
     cmake -DCONAN_PROFILE=../profile/swf_ubuntu16_x64_gcc5 -DCMAKE_TOOLCHAIN_FILE=../**.cmake .
     lcov --capture --directory . --output-file main_coverage.info
     genhtml main_coverage.info --output-directory out
