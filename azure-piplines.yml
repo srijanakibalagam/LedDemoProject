@@ -15,6 +15,7 @@ steps:
 
 - script: |
     cd test_package/build
+    cmake -DCONAN_PROFILE=../profile/swf_ubuntu16_x64_gcc5 -DCMAKE_TOOLCHAIN_FILE=../cmake/swf_ubuntu16_x64_gcc5.cmake .
     ls
   displayName: 'Uploading packages to artifactory'
 
