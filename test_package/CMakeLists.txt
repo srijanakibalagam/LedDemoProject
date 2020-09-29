@@ -11,3 +11,9 @@ ADD_EXECUTABLE(${BINARY_NAME}-test test_runner.cc source_test.cc ../src/run_led.
 
 TARGET_LINK_LIBRARIES(${BINARY_NAME}-test ${CONAN_LIBS} pthread)
 
+# Create the gcov target. Run coverage tests with 'make gcov'
+add_custom_target(gcov
+    COMMAND mkdir -p coverage
+    COMMAND ${CMAKE_MAKE_PROGRAM} test
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    )
