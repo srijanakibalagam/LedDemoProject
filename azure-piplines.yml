@@ -6,8 +6,6 @@ pool:
 steps:
 - script: |
     pwd
-    sudo apt-get update -y
-    sudo apt-get install -y lcov
     conan config install conanconfig
     conan remote list
     conan user
@@ -16,7 +14,7 @@ steps:
   displayName: 'Building via Conan'
 
 - script: |
-    ls 
+    ls src
   displayName: 'Uploading packages to artifactory'
 
 - script: |
