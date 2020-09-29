@@ -26,3 +26,17 @@ add_custom_command(TARGET gcov
     COMMAND echo "-- Coverage files have been output to ${CMAKE_BINARY_DIR}/coverage"
     WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/coverage
     )
+
+# Create the gcov-clean target. This cleans the build as well as generated 
+# .gcda and .gcno files.
+add_custom_target(scrub
+COMMAND ${CMAKE_MAKE_PROGRAM} clean
+COMMAND rm -f ${OBJECT_DIR}/*.gcno
+COMMAND rm -f ${OBJECT_DIR}/*.gcda
+WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+
+# Testing
+enable_testing()
+
+add_test(output_test ${CMAKE_BINARY_DIR}/main)
+set_tests_properties(output_test PROPERTIES PASS_REGULAR_EXPRESSION "0;5;10")
