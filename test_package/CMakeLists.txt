@@ -30,7 +30,6 @@ add_custom_command(TARGET gcov
 # Create the gcov-clean target. This cleans the build as well as generated 
 # .gcda and .gcno files.
 add_custom_target(scrub
-COMMAND ${CMAKE_MAKE_PROGRAM} clean
 COMMAND rm -f ${OBJECT_DIR}/*.gcno
 COMMAND rm -f ${OBJECT_DIR}/*.gcda
 WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
