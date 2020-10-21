@@ -65,4 +65,9 @@ class RaspigtestexampleConan(ConanFile):
                 self.output.error("Raspberry pi toolchain path is not configured. Configure QEMU_LD_PREFIX to run the executable.")
 
         self.run(os.path.join(self.build_folder, "bin", exec_name), run_environment=True)
+    
+    gcov main.gcno
+    lcov --capture --directory self.build_folder --output-file self.build_folder/main_coverage.info
+    genhtml self.build_folder/main_coverage.info --output-directory out
+
         
