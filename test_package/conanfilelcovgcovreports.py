@@ -6,7 +6,7 @@ class LcovConan(ConanFile):
     name = "lcov_installer"
     version = "1.14"
     license = "GPL"
-    author = "Torfinn Berset <torfinn@bloomlife.com>"
+    author = "Sri Janaki Balagam <srijanaki.balagam@zf.com>"
     url = "https://github.com/torfinnberset/conan-lcov-installer"
     homepage = "http://ltp.sourceforge.net/coverage/lcov.php"
     description = "A graphical front-end for GCC's coverage testing tool gcov"
