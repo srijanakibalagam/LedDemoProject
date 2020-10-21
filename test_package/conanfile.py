@@ -68,10 +68,10 @@ class RaspigtestexampleConan(ConanFile):
         self.codecoverage()
     
     def codecoverage(self):
-        lcov = os.path.join(self.deps_cpp_info["lcov"].bin_paths[0],"lcov")
+        lcv = os.path.join(self.deps_cpp_info["lcov"].bin_paths[0],"lcov")
         genhtml = os.path.join(self.deps_cpp_info["lcov"].bin_paths[0],"genhtml")
-        self.run("%s --capture --directory . --output-file ../../coverage.info" % lcov)
-        self.run("%s --remove ../../coverage.info -o ../../coverage.info" % lcov)
+        self.run("%s --capture --directory . --output-file ../../coverage.info" % lcv)
+        self.run("%s --remove ../../coverage.info -o ../../coverage.info" % lcv)
         self.run("%s ../../coverage.info --output-directory ../../coverager_results" % genhtml)
         
         
