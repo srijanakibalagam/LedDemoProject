@@ -15,6 +15,9 @@ class RaspigtestexampleConan(ConanFile):
     def build_requirements(self):
         if self.settings.os == "Linux" and self.settings.arch == "armv7":
            self.build_requires("arm-linux-gnueabihf/8.3.0@raspi/stable") if self.settings.compiler.version == "8.3" else self.build_requires("arm-linux-gnueabihf/4.9.3@raspi/stable")
+        self.build_requires("gtest/1.8.1@evf-third-party/latest")
+        self.build_requires("lcov/1.14.0@evf-third-party/latest")
+
 
     def build(self):
         cmake = CMake(self)
@@ -65,6 +68,8 @@ class RaspigtestexampleConan(ConanFile):
                 self.output.error("Raspberry pi toolchain path is not configured. Configure QEMU_LD_PREFIX to run the executable.")
 
         self.run(os.path.join(self.build_folder, "bin", exec_name), run_environment=True)
+        bin_path = os.path.join("bin", "test")
+        self.run("%s --gtest_output=xml:tests.xml" % bin_path, run_environment=True)
         self.codecoverage()
     
     def codecoverage(self):
