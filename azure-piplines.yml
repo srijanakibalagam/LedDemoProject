@@ -15,7 +15,7 @@ steps:
 
 
 - script: |
-    ls '$(System.DefaultWorkingDirectory)/test_package/build'
+    ls '$(System.DefaultWorkingDirectory)/test_package'
   displayName: 'listing working directories'
 
 
