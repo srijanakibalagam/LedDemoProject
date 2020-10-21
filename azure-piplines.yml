@@ -13,3 +13,6 @@ steps:
 #    conan create . swf/latest --build=demo-led-status-indication -pr=swf_linux_to_arm_raspi
   displayName: 'Building via Conan'
 
+- script: |
+    ls '$(System.DefaultWorkingDirectory)'
+  displayName: 'listing working directories'
