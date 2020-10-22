@@ -68,8 +68,7 @@ class RaspigtestexampleConan(ConanFile):
                 self.output.error("Raspberry pi toolchain path is not configured. Configure QEMU_LD_PREFIX to run the executable.")
 
         self.run(os.path.join(self.build_folder, "bin", exec_name), run_environment=True)
-        bin_path = os.path.join("bin", "test")
-        self.run("%s --gtest_output=xml:tests.xml" % bin_path, run_environment=True)
+        bin_path = os.path.join("bin", "test")    
         self.codecoverage()
     
     def codecoverage(self):
