@@ -26,7 +26,7 @@ steps:
   displayName: 'Running Lcov Gcov!'  
 
 - script: |
-        ls test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE
+        ls coverager_results/usr/include/c++/5/ext:
   displayName: 'opening code coverage report'
 
 - task: PublishCodeCoverageResults@1
