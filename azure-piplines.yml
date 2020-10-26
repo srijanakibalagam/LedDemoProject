@@ -18,6 +18,15 @@ steps:
     ls '$(System.DefaultWorkingDirectory)/test_package'
   displayName: 'listing working directories'
 
+- script: |
+    cd test_package/build
+    gcov main.gcno
+    lcov --capture --directory . --output-file main_coverage.info
+    genhtml main_coverage.info --output-directory out
+    ls out
+  displayName: 'Uploading packages to artifactory'
+  #cmake -DCONAN_PROFILE=../profile/swf_ubuntu16_x64_gcc5 -DCMAKE_TOOLCHAIN_FILE=../**.cmake .
+
 
 
   
