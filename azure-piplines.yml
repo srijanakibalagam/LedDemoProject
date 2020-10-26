@@ -32,9 +32,9 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE/**'
-    pathToSources: '$(System.DefaultWorkingDirectory)/test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverager_results/usr/include/c++/5/ext:/**'
+    pathToSources: '$(System.DefaultWorkingDirectory)/coverager_results/usr/include/c++/5/ext:'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/coverager_results/usr/include/c++/5/ext:'
   displayName: 'publish code coverage report'
   
 
