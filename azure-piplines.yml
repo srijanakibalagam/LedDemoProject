@@ -26,8 +26,11 @@ steps:
   displayName: 'Running Lcov Gcov!'  
 
 - script: |
-        cd test/build/CMakeFiles/gtestbin.dir
-…  inputs:
+        ls test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE
+  displayName: 'opening code coverage report'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
     codeCoverageTool: 'JaCoCo'
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE/**'
     pathToSources: '$(System.DefaultWorkingDirectory)/test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE'
