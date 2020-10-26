@@ -21,7 +21,7 @@ steps:
 - script: |
     cd test_package/build
     gcov main.gcno
-    lcov --capture --directory . --output-file main_coverage.info
+    lcov --capture --directory . --./coverager_results/usr/include/c++/5/ext
     genhtml main_coverage.info --output-directory out
     ls out
   displayName: 'Uploading packages to artifactory'
