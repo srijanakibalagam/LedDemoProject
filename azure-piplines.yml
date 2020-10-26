@@ -19,12 +19,20 @@ steps:
   displayName: 'listing working directories'
 
 - script: |
-    cd test_package/build
-    gcov main.gcno
-    lcov --capture --directory . --output-file main_coverage.info
-    genhtml main_coverage.info --output-directory out
-    ls out
-  displayName: 'Uploading packages to artifactory'
+        cd test/build/CMakeFiles/gtestbin.dir
+        gcov main.gcno
+        lcov --capture --directory . --output-file LCOVOUTPUT.info
+        genhtml LCOVOUTPUT.info --output-directory CODE_COVERAGE
+  displayName: 'Running Lcov Gcov!'  
+
+- script: |
+        cd test/build/CMakeFiles/gtestbin.dir
+…  inputs:
+    codeCoverageTool: 'JaCoCo'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE/**'
+    pathToSources: '$(System.DefaultWorkingDirectory)/test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/test/build/CMakeFiles/gtestbin.dir/CODE_COVERAGE'
+  displayName: 'publish code coverage report'
   
 
 
