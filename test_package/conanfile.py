@@ -77,7 +77,7 @@ class RaspigtestexampleConan(ConanFile):
         genhtml = os.path.join(self.deps_cpp_info["lcov"].bin_paths[0],"genhtml")
         self.run("%s --capture --directory . --output-file coverage.info" % lcov)
         print(os.getcwd())
-        self.run("ls -lR")
         self.run("%s coverage.info --output-directory coverager_results" % genhtml)
+        self.run("ls -lR")
         
         
