@@ -8,7 +8,7 @@ steps:
     pwd
     conan config install conanconfig
     conan remote list
-    conan user
+$(System.DefaultWorkingDirectory)$(System.DefaultWorkingDirectory    conan user
     conan create . swf/latest --build=demo-led-status-indication -pr=swf_ubuntu16_x64_gcc5
 #    conan create . swf/latest --build=demo-led-status-indication -pr=swf_linux_to_arm_raspi
   displayName: 'Building via Conan'
@@ -17,7 +17,6 @@ steps:
 - script: |
     ls '$(System.DefaultWorkingDirectory)/test_package'
   displayName: 'listing working directories'
-
 - script: |
         cd test/build/CMakeFiles/gtestbin.dir
         gcov main.gcno
@@ -26,7 +25,7 @@ steps:
   displayName: 'Running Lcov Gcov!'  
 
 - script: |
-        ls coverager_results/usr/include/c++/5/ext
+        ls $(System.DefaultWorkingDirectory)
   displayName: 'opening code coverage report'
 
 - task: PublishCodeCoverageResults@1
