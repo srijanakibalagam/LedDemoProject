@@ -25,15 +25,15 @@ steps:
   displayName: 'Running Lcov Gcov!'  
 
 - script: |
-        ls $(System.DefaultWorkingDirectory)/CODE_COVERAGE
+        ls $(System.DefaultWorkingDirectory)/CODE_COVERAGE/usr/include/c++/5/ext
   displayName: 'opening code coverage report'
 
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/CODE_COVERAGE/usr/include/c++/5/ext/**'
-    pathToSources: '$(System.DefaultWorkingDirectory)/coverager_results/usr/include/c++/5/ext'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/coverager_results/usr/include/c++/5/ext'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/CODE_COVERAGE/**'
+    pathToSources: '$(System.DefaultWorkingDirectory)/CODE_COVERAGE'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/CODE_COVERAGE'
   displayName: 'publish code coverage report'
   
 
