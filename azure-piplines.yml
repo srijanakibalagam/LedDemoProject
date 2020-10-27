@@ -8,7 +8,7 @@ steps:
     pwd
     conan config install conanconfig
     conan remote list
-$(System.DefaultWorkingDirectory)$(System.DefaultWorkingDirectory    conan user
+    $(System.DefaultWorkingDirectory)$(System.DefaultWorkingDirectory    conan user
     conan create . swf/latest --build=demo-led-status-indication -pr=swf_ubuntu16_x64_gcc5
 #    conan create . swf/latest --build=demo-led-status-indication -pr=swf_linux_to_arm_raspi
   displayName: 'Building via Conan'
