@@ -6,14 +6,33 @@
 trigger:
 - master
 
+pr:
+  branches:
+    include:
+    - master
+    
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+variables:
+  - group: secrets
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+stages:
+  -stage: Test
+    jobs: 
+      -job: CodeBeamer
+       displayName: "CodeBeamer Upload"
+       steps:
+        -script: |
+           echo "Empty job."
+- task: codeBeamer@1
+  inputs:
+    test_xml_folder: 'example/Test_results'
+    test_run_name: '$(Build.DefinitionName) $(Build.Reason)'
+    test_run_id: '$(Build.BuildId)'
+    server_url: 'https://codebeamer.zf-world.com'
+    cb_user: '$(cb_user)'
+    cb_password: '$(cb_password)'
+    test_configuration_id: '9136'
+    test_case_tracker_id: '12387'
+    test_run_tracker_id: '12391'
