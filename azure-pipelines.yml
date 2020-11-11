@@ -18,7 +18,7 @@ variables:
   - group: secrets
 
 stages:
-  -stage: Test
+  - stage: Test
     jobs: 
       -job: CodeBeamer
        displayName: "CodeBeamer Upload"
