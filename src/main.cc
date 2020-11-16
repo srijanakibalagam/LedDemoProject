@@ -47,6 +47,7 @@
  */
 int main(int argc, const char* argv[]) {
   std::cout << "\tHello this is the demo led project!! " << std::endl;
+  std::cout << "Hello my name is Christopher" << std::endl;
 
   return run_led();
 }
