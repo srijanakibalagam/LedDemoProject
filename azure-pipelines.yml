@@ -12,6 +12,7 @@ pr:
     - master
     
 pool:
+
   vmImage: 'ubuntu-latest'
 
 variables:
@@ -20,19 +21,20 @@ variables:
 stages:
   - stage: Test
     jobs: 
-      -job: CodeBeamer
-       displayName: "CodeBeamer Upload"
-       steps:
-        -script: |
-           echo "Empty job."
-- task: codeBeamer@1
-  inputs:
-    test_xml_folder: 'example/Test_results'
-    test_run_name: '$(Build.DefinitionName) $(Build.Reason)'
-    test_run_id: '$(Build.BuildId)'
-    server_url: 'https://codebeamer.zf-world.com'
-    cb_user: '$(cb_user)'
-    cb_password: '$(cb_password)'
-    test_configuration_id: '9136'
-    test_case_tracker_id: '12387'
-    test_run_tracker_id: '12391'
+      - job: CodeBeamer
+        displayName: "CodeBeamer Upload"
+        steps:
+          - script: |
+              echo "Empty job."
+    
+          - task: codeBeamer@1
+            inputs:
+              test_xml_folder: 'Example/Test_results'
+              test_run_name: '$(Build.DefinitionName) $(Build.Reason)'
+              test_run_id: '$(Build.BuildId)'
+              server_url: 'https://codebeamer.zf-world.com/'
+              cb_user: '$(cb_user)'
+              cb_password: '$(cb_password)'
+              test_configuration_id: '34932'
+              test_case_tracker_id: '34930'
+              test_run_tracker_id: '34933'
