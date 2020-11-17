@@ -16,7 +16,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  - group: secrets
+  - group: credentials
 
 stages:
   - stage: Test
