@@ -13,3 +13,26 @@ steps:
 #    conan create . swf/latest --build=demo-led-status-indication -pr=swf_linux_to_arm_raspi
   displayName: 'Building via Conan'
 
+
+- script: |
+    ls '$(System.DefaultWorkingDirectory)/test_package'
+  displayName: 'listing working directories'
+- script: |
+        cd test/build/CMakeFiles/gtestbin.dir
+        gcov main.gcno
+        lcov --capture --directory . --output-file LCOVOUTPUT.info
+        genhtml LCOVOUTPUT.info --output-directory CODE_COVERAGE
+  displayName: 'Running Lcov Gcov!'  
+
+- script: |
+        ls $(System.DefaultWorkingDirectory)/CODE_COVERAGE/usr/include/c++/5/ext
+  displayName: 'opening code coverage report'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'JaCoCo'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/CODE_COVERAGE/**'
+    pathToSources: '$(System.DefaultWorkingDirectory)/CODE_COVERAGE'
+    reportDirectory: '$(System.DefaultWorkingDirectory)/CODE_COVERAGE'
+  displayName: 'publish code coverage report'
+  
